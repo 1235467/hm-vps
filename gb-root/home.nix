@@ -13,7 +13,7 @@ in
   ];
 
   home.file = {
-  ".local/bin/hms".text = "nix flake update ~\/hm\-vps\/gb\/ && home\-manager switch \-\-flake ~\/hm\-vps\/gb";
+  ".local/bin/hms".text = "nix flake update \/home\/xiao\/hm\-vps\/gb\-root\/ && home\-manager switch \-\-flake \/home\/xiao\/hm\-vps\/gb\-root\/";
   ".local/bin/hms".executable = true;
   };
 
