@@ -13,6 +13,7 @@ in
   ];
 
   home.file = {
+  ".local/bin/hms".text = "nix flake update ~\/hm\-vps\/gb\/ && home\-manager switch ~\/hm\-vps\/gb";
   };
 
   home.sessionVariables = {

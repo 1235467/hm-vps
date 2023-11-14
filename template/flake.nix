@@ -16,7 +16,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       variables = import ./variables.nix;
     in {
-      homeConfigurations."$variables.username" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${variables.username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
       };
