@@ -1,13 +1,10 @@
 { config, pkgs, ... }:
-let
- variables = import ./variables.nix;
-in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "${variables.username}";
-  home.homeDirectory = "/home/${variables.username}";
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.username = "xiao";
+  home.homeDirectory = "/home/xiao";
+  home.stateVersion = "23.11"; # Please read the comment before changing.
   home.packages = [
     pkgs.arion
   ];
