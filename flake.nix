@@ -6,8 +6,12 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur-custom.url = "github:1235467/nurpkgs";
+    nur-custom.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/nur";
+
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nur-custom, nur, ... }:
     let
       users = {
         xiao = {
@@ -24,7 +28,6 @@
           homeDirectory = "/root";
           email = "example";
         };
-
       };
       pkgsForSystem = { system, pkgs ? nixpkgs }: import pkgs {
         inherit system;
@@ -40,6 +43,7 @@
           ];
           extraSpecialArgs = {
             user = users.xiao;
+            inherit nur nur-custom;
           };
         };
         root = home-manager.lib.homeManagerConfiguration {
@@ -49,6 +53,7 @@
           ];
           extraSpecialArgs = {
             user = users.root;
+            inherit nur nur-custom;
           };
       };
       gb2-root = home-manager.lib.homeManagerConfiguration {
@@ -58,6 +63,7 @@
           ];
           extraSpecialArgs = {
             user = users.root;
+            inherit nur nur-custom;
           };
       };
     };

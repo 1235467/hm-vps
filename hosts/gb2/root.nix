@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, nur, nur-custom, ... }:
+let
+  nurpkgs = import nur { inherit pkgs; };
+  nurpkgs-custom = import nur-custom { inherit pkgs; };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -8,6 +11,7 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
   home.packages = [
     pkgs.arion
+    nurpkgs-custom.swgp-go
   ];
 
   home.file = {
