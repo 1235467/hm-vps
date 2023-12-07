@@ -12,6 +12,7 @@ in
   home.packages = [
     pkgs.arion
     nurpkgs-custom.swgp-go
+    pkgs.tcping-go
   ];
 
   home.file = {
