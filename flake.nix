@@ -15,14 +15,12 @@
     let
       users = {
         xiao = {
-          # CHANGE ME TO YOUR USER
           name = "xiao";
           username = "xiao";
           homeDirectory = "/home/xiao";
           email = "example";
         };
         root = {
-          # CHANGE ME TO YOUR USER
           name = "root";
           username = "root";
           homeDirectory = "/root";
@@ -60,6 +58,16 @@
           pkgs = pkgsForSystem { system = "x86_64-linux"; };
           modules = [
             ./hosts/gb2/root.nix
+          ];
+          extraSpecialArgs = {
+            user = users.root;
+            inherit nur nur-custom;
+          };
+      };
+      ro-root = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsForSystem { system = "x86_64-linux"; };
+          modules = [
+            ./hosts/ro/root.nix
           ];
           extraSpecialArgs = {
             user = users.root;
