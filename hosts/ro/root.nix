@@ -22,6 +22,18 @@ in
 
   home.sessionVariables = {
   };
-
+  systemd.user.services.qbittorrent = {
+    Unit = {
+      Description = "qbittorrent";
+      Wants = "network-online.target";
+      After = "network-online.target";
+    };
+    Service = {
+      ExecStart = "/root/.nix-profile/bin/qbittorrent-nox";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
   programs.home-manager.enable = true;
 }
