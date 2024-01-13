@@ -26,6 +26,12 @@
           homeDirectory = "/root";
           email = "example";
         };
+        bruce = {
+          name = "bruce";
+          username = "bruce";
+          homeDirectory = "/home/bruce";
+          email = "example";
+        };
       };
       pkgsForSystem = { system, pkgs ? nixpkgs }: import pkgs {
         inherit system;
@@ -53,8 +59,8 @@
             user = users.root;
             inherit nur nur-custom;
           };
-      };
-      gb2-root = home-manager.lib.homeManagerConfiguration {
+        };
+        gb2-root = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsForSystem { system = "x86_64-linux"; };
           modules = [
             ./hosts/gb2/root.nix
@@ -63,8 +69,8 @@
             user = users.root;
             inherit nur nur-custom;
           };
-      };
-      ro-root = home-manager.lib.homeManagerConfiguration {
+        };
+        ro-root = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsForSystem { system = "x86_64-linux"; };
           modules = [
             ./hosts/ro/root.nix
@@ -73,7 +79,17 @@
             user = users.root;
             inherit nur nur-custom;
           };
+        };
+        au = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsForSystem { system = "x86_64-linux"; };
+          modules = [
+            ./hosts/au/bruce.nix
+          ];
+          extraSpecialArgs = {
+            user = users.bruce;
+            inherit nur nur-custom;
+          };
+        };
       };
     };
-};
 }
